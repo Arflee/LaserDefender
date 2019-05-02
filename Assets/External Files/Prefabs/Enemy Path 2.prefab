@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3649510162799234178}
   - component: {fileID: 3649510162799234177}
+  - component: {fileID: 5488580069485357773}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy Path 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ee8e92d2c4690c44989d51f9436844e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04fe45ff81171f149845a64358b1a7f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -79,3 +80,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5488580069485357773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649510162799234176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf3c4a6d87db314099056cf0d16fcd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveConfig: {fileID: 11400000, guid: 7bf857e43fe475940a5cc3814a7d204b, type: 2}
+  moveSpeed: 2
+  infiniteMoving: 1
