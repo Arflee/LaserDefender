@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3649510162799234178}
   - component: {fileID: 3649510162799234177}
+  - component: {fileID: 4504048814034136322}
   - component: {fileID: 5488580069485357773}
+  - component: {fileID: 7903966108719237477}
   m_Layer: 0
-  m_Name: Enemy Path 2
+  m_Name: Enemy 2 Path 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,6 +82,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &4504048814034136322
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649510162799234176}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.04, y: 0.84}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.26, y: -0.431789}
+      - {x: 0.52, y: 0.03}
+      - {x: 0.52813613, y: 0.1718637}
+      - {x: 0.33610538, y: 0.16590767}
+      - {x: 0.19732566, y: 0.2740086}
+      - {x: 0.1937537, y: 0.33661532}
+      - {x: -0.009389147, y: 0.4288835}
+      - {x: -0.19681314, y: 0.33349013}
+      - {x: -0.19369696, y: 0.27615032}
+      - {x: -0.32696715, y: 0.16116479}
+      - {x: -0.5258944, y: 0.16231644}
+      - {x: -0.49249232, y: 0.023929665}
+      - {x: -0.2426956, y: -0.431789}
+      - {x: -0.058338687, y: -0.43268436}
+      - {x: -0.08577362, y: -0.25571156}
+      - {x: 0.08166385, y: -0.25256342}
+      - {x: 0.04803513, y: -0.42785934}
 --- !u!114 &5488580069485357773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +136,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf3c4a6d87db314099056cf0d16fcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfig: {fileID: 11400000, guid: 7bf857e43fe475940a5cc3814a7d204b, type: 2}
-  moveSpeed: 2
-  infiniteMoving: 1
+--- !u!114 &7903966108719237477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649510162799234176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b1fc15438577b4f9ec8c0cab3b43e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4141383648991153528, guid: e376b88c604398d488031014c4682432,
+    type: 3}
+  speedOfLaser: 5
+  health: 20
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3

@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
-    [SerializeField] WaveConfig waveConfig = null;
-    [SerializeField] private bool infiniteMoving = true;
-
+    private WaveConfig waveConfig;
     private List<Transform> waypoints = new List<Transform>();
     private int waypointIndex = 0;
 
@@ -22,9 +20,9 @@ public class EnemyPathing : MonoBehaviour
         MoveToWaypoint();
     }
 
-    public void SetWaveConfig()
+    public void SetWaveConfig(WaveConfig waveConfig)
     {
-
+        this.waveConfig = waveConfig;
     }
 
     private void MoveToWaypoint()
@@ -43,7 +41,7 @@ public class EnemyPathing : MonoBehaviour
         }
         else
         {
-            if (infiniteMoving)
+            if (waveConfig.GetInfiniteMoving())
             {
                 waypointIndex = 0;
             }

@@ -10,7 +10,8 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private float spawnCooldown = 0.5f;
     [SerializeField] private float spawnRandomFactor = 0.3f;
     [SerializeField] private int numberOfEnemies = 5;
-    [SerializeField] float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private bool infiniteMoving = false;
 
     public GameObject GetEnemyPrefab() { return enemyPrefab; }
 
@@ -32,4 +33,6 @@ public class WaveConfig : ScriptableObject
     public int GetNumberOfEnemies() { return numberOfEnemies; }
 
     public float GetMoveSpeed() { return moveSpeed; }
+
+    public bool GetInfiniteMoving() { return infiniteMoving; }
 }
