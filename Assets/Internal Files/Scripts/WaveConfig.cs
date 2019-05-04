@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
@@ -13,7 +12,10 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private bool infiniteMoving = false;
 
-    public GameObject GetEnemyPrefab() { return enemyPrefab; }
+    public GameObject GetEnemyPrefab()
+    {
+        return enemyPrefab;
+    }
 
     public List<Transform> GetWaypoints()
     {
@@ -26,13 +28,28 @@ public class WaveConfig : ScriptableObject
         return waypoints;
     }
 
-    public float GetSpawnCooldown() { return spawnCooldown; }
+    public float GetSpawnCooldown()
+    {
+        return spawnCooldown;
+    }
 
-    public float GetSpawnRandomFactor() { return spawnRandomFactor; }
+    public float GetSpawnRandomFactor()
+    {
+        return spawnRandomFactor;
+    }
 
-    public int GetNumberOfEnemies() { return numberOfEnemies; }
+    public int GetNumberOfEnemies()
+    {
+        return numberOfEnemies;
+    }
 
-    public float GetMoveSpeed() { return moveSpeed; }
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
 
-    public bool GetInfiniteMoving() { return infiniteMoving; }
+    public bool GetInfiniteMoving()
+    {
+        return infiniteMoving;
+    }
 }

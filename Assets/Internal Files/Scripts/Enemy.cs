@@ -1,23 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject explosionPrefab = null;
+    [Header("Laser")]
     [SerializeField] private GameObject projectilePrefab = null;
     [SerializeField] private float speedOfLaser = 3f;
-    [SerializeField] private float health = 100f;
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
 
+    [Header("Enemy")]
+    [Space]
+    [SerializeField] private GameObject explosionPrefab = null;
+    [SerializeField] private float health = 100f;
+    [SerializeField] private AudioClip enemyDeath = null;
+    [SerializeField] private AudioClip enemyShot = null;
+
     private float shootCounter;
     private ParticleSystem explosionsParticles;
+    private AudioSource enemySFX = null;
 
     private void Start()
     {
         explosionsParticles = explosionPrefab.GetComponent<ParticleSystem>();
+        enemySFX = GetComponent<AudioSource>();
         shootCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
@@ -38,9 +44,10 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-        GameObject enemyLaser = 
+        GameObject enemyLaser =
             Instantiate(projectilePrefab, this.gameObject.transform.position, Quaternion.identity);
         enemyLaser.GetComponent<Rigidbody2D>().velocity = Vector2.down * speedOfLaser;
+        enemySFX.PlayOneShot(enemyShot);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,6 +70,8 @@ public class Enemy : MonoBehaviour
                 Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
 
             Destroy(particleObject, explosionsParticles.main.duration);
+
+            AudioSource.PlayClipAtPoint(enemyDeath, transform.position);
             Destroy(this.gameObject);
         }
     }

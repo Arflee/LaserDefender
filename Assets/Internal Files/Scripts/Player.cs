@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField, Range(-5, 5)] private float xBoundsOffset = 0.5f;
+
     [SerializeField, Range(-5, 5)] private float yBoundsOffset = 0.5f;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private int health = 100;
@@ -17,7 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0.1f, 5)] private float profectileFiringPeriod = 0.1f;
 
     [Space]
-
     [SerializeField] private GameObject explosionPrefab = null;
 
     private float xMin;
@@ -57,8 +55,8 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            GameObject particleObject = 
-                Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
+            GameObject particleObject =
+                Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
 
             Destroy(particleObject, explosionParticles.main.duration);
             Destroy(this.gameObject);
@@ -94,9 +92,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-             firingCoroutine = StartCoroutine(FireContioniously());
+            firingCoroutine = StartCoroutine(FireContioniously());
         }
-        if(Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
             StopCoroutine(firingCoroutine);
         }

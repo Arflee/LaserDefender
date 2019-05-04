@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
         do
         {
             yield return StartCoroutine(SpawnAllWaves());
-        } while (looping);  
+        } while (looping);
     }
 
     private IEnumerator SpawnAllWaves()
