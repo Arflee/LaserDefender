@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject laserPrefab = null;
+    [Header("Player")]
     [SerializeField, Range(-5, 5)] private float xBoundsOffset = 0.5f;
     [SerializeField, Range(-5, 5)] private float yBoundsOffset = 0.5f;
     [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private int health = 100;
+
+    [Header("Projectile")]
+    [SerializeField] private GameObject laserPrefab = null;
     [SerializeField] private float laserSpeed = 10f;
     [SerializeField, Range(0.1f, 5)] private float profectileFiringPeriod = 0.1f;
+
+    [Space]
+
+    [SerializeField] private GameObject explosionPrefab = null;
 
     private float xMin;
     private float xMax;
@@ -18,9 +26,12 @@ public class Player : MonoBehaviour
     private float yMax;
 
     private Coroutine firingCoroutine;
+    private ParticleSystem explosionParticles;
 
     private void Start()
     {
+        explosionParticles = explosionPrefab.GetComponent<ParticleSystem>();
+
         SetupMoveBoundaries();
     }
 
@@ -28,6 +39,30 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        if (damageDealer != null)
+        {
+            health -= damageDealer.GetDamage();
+            damageDealer.Hit();
+        }
+
+        if (health <= 0)
+        {
+            GameObject particleObject = 
+                Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
+
+            Destroy(particleObject, explosionParticles.main.duration);
+            Destroy(this.gameObject);
+        }
     }
 
     private void Move()

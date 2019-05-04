@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8674552969602786529}
   - component: {fileID: 8674552969602786528}
+  - component: {fileID: 3973909634688520418}
   - component: {fileID: 8674552969602786530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +81,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &3973909634688520418
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674552969602786543}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 0.75}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.513919, y: 0.1046653}
+      - {x: 0.3560255, y: -0.006653592}
+      - {x: 0.13083288, y: 0.12678307}
+      - {x: 0.098427296, y: 0.39125448}
+      - {x: -0.09572563, y: 0.3905468}
+      - {x: -0.13130797, y: 0.124206685}
+      - {x: -0.36438203, y: -0.0070837587}
+      - {x: -0.506483, y: 0.09570772}
+      - {x: -0.4788656, y: -0.25471038}
+      - {x: -0.14758338, y: -0.2834396}
+      - {x: -0.092580594, y: -0.38546464}
+      - {x: 0.08909396, y: -0.38835207}
+      - {x: 0.14910927, y: -0.28349543}
+      - {x: 0.48051348, y: -0.25508374}
 --- !u!114 &8674552969602786530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,10 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc328ff282cb74143b5b19167b848376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 4141383648991153528, guid: 9db4507c03f459548adbca2bde391901,
-    type: 3}
   xBoundsOffset: 0.5
   yBoundsOffset: 0.5
   moveSpeed: 10
+  health: 100
+  laserPrefab: {fileID: 4141383648991153528, guid: 9db4507c03f459548adbca2bde391901,
+    type: 3}
   laserSpeed: 30
   profectileFiringPeriod: 0.36
+  explosionPrefab: {fileID: 7381251618502379745, guid: 30bfcd76acdae004e8a7e29586f89187,
+    type: 3}

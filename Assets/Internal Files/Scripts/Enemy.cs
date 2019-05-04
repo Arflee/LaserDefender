@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject projectilePrefab = null;
+    [SerializeField] private GameObject explosionPrefab = null;
+    [SerializeField] private GameObject projectilePrefab = null;
     [SerializeField] private float speedOfLaser = 3f;
     [SerializeField] private float health = 100f;
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
 
     private float shootCounter;
+    private ParticleSystem explosionsParticles;
 
     private void Start()
     {
+        explosionsParticles = explosionPrefab.GetComponent<ParticleSystem>();
         shootCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
@@ -51,10 +54,15 @@ public class Enemy : MonoBehaviour
         if (damageDealer != null)
         {
             health -= damageDealer.GetDamage();
+            damageDealer.Hit();
         }
 
         if (health <= 0)
         {
+            GameObject particleObject =
+                Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+
+            Destroy(particleObject, explosionsParticles.main.duration);
             Destroy(this.gameObject);
         }
     }
