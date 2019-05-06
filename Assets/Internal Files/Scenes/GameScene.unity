@@ -743,7 +743,7 @@ PrefabInstance:
     - target: {fileID: 8674552969602786530, guid: 0d5388bb4be331847819fad252863d0b,
         type: 3}
       propertyPath: profectileFiringPeriod
-      value: 0.1
+      value: 0.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d5388bb4be331847819fad252863d0b, type: 3}

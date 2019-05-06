@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3649510162799234176
+--- !u!1 &8674552969602786543
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3649510162799234178}
-  - component: {fileID: 3649510162799234177}
-  - component: {fileID: 930912752808118212}
-  - component: {fileID: 5488580069485357773}
-  - component: {fileID: 2369670806588265395}
-  - component: {fileID: 2568941176076882468}
-  m_Layer: 9
-  m_Name: Enemy 1 Path 1
+  - component: {fileID: 8674552969602786529}
+  - component: {fileID: 8674552969602786528}
+  - component: {fileID: 3973909634688520418}
+  - component: {fileID: 8674552969602786530}
+  - component: {fileID: 7988329966358820273}
+  m_Layer: 8
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3649510162799234178
+--- !u!4 &8674552969602786529
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649510162799234176}
+  m_GameObject: {fileID: 8674552969602786543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3649510162799234177
+--- !u!212 &8674552969602786528
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649510162799234176}
+  m_GameObject: {fileID: 8674552969602786543}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ee8e92d2c4690c44989d51f9436844e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62c4fb4376e357141a5a4ac9f8327bcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,13 +82,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &930912752808118212
+--- !u!60 &3973909634688520418
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649510162799234176}
+  m_GameObject: {fileID: 8674552969602786543}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -100,7 +99,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.03, y: 0.84}
+    oldSize: {x: 0.99, y: 0.75}
     newSize: {x: 0.99, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -108,67 +107,52 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.10792366, y: -0.34000003}
-      - {x: 0.09924356, y: -0.34003532}
-      - {x: 0.14071698, y: -0.24220502}
-      - {x: 0.27347875, y: -0.3030423}
-      - {x: 0.25174433, y: -0.410724}
-      - {x: 0.3952059, y: -0.43713984}
-      - {x: 0.5326622, y: 0.02584437}
-      - {x: 0.275, y: 0.37}
-      - {x: 0.17250144, y: 0.37249863}
-      - {x: 0.0746695, y: 0.43429312}
-      - {x: -0.092646375, y: 0.43117678}
-      - {x: -0.18075053, y: 0.3821247}
-      - {x: -0.275, y: 0.38}
-      - {x: -0.5303224, y: 0.025839683}
-      - {x: -0.42499998, y: -0.35999998}
-      - {x: -0.39499998, y: -0.42}
-      - {x: -0.285, y: -0.42}
-      - {x: -0.255, y: -0.41}
-      - {x: -0.29164124, y: -0.29507694}
-      - {x: -0.13499999, y: -0.25}
---- !u!114 &5488580069485357773
+    - - {x: 0.513919, y: 0.1046653}
+      - {x: 0.3560255, y: -0.006653592}
+      - {x: 0.13083288, y: 0.12678307}
+      - {x: 0.098427296, y: 0.39125448}
+      - {x: -0.09572563, y: 0.3905468}
+      - {x: -0.13130797, y: 0.124206685}
+      - {x: -0.36438203, y: -0.0070837587}
+      - {x: -0.506483, y: 0.09570772}
+      - {x: -0.4788656, y: -0.25471038}
+      - {x: -0.14758338, y: -0.2834396}
+      - {x: -0.092580594, y: -0.38546464}
+      - {x: 0.08909396, y: -0.38835207}
+      - {x: 0.14910927, y: -0.28349543}
+      - {x: 0.48051348, y: -0.25508374}
+--- !u!114 &8674552969602786530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649510162799234176}
+  m_GameObject: {fileID: 8674552969602786543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf3c4a6d87db314099056cf0d16fcd0, type: 3}
+  m_Script: {fileID: 11500000, guid: fc328ff282cb74143b5b19167b848376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2369670806588265395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649510162799234176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b1fc15438577b4f9ec8c0cab3b43e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4141383648991153528, guid: e376b88c604398d488031014c4682432,
-    type: 3}
-  speedOfLaser: 10
-  minTimeBetweenShots: 0.2
-  maxTimeBetweenShots: 3
+  xBoundsOffset: 0.5
+  yBoundsOffset: 0.5
+  moveSpeed: 10
+  health: 100
   explosionPrefab: {fileID: 7381251618502379745, guid: 30bfcd76acdae004e8a7e29586f89187,
     type: 3}
-  health: 20
-  enemyDeath: {fileID: 8300000, guid: 269935c85852ee74c827ccef05a4b034, type: 3}
-  enemyShot: {fileID: 8300000, guid: 2ebd20e47b7ca004d8d6e6cb74945c0b, type: 3}
---- !u!82 &2568941176076882468
+  soundVolume: 0.44
+  deathSound: {fileID: 8300000, guid: fc7d9d0d9c89092498370d09170d720c, type: 3}
+  hitSound: {fileID: 8300000, guid: 08670b987ffa88a40be5a9ed04e2b079, type: 3}
+  profectileFiringPeriod: 0.36
+  laserPrefab: {fileID: 4141383648991153528, guid: 9db4507c03f459548adbca2bde391901,
+    type: 3}
+  laserSpeed: 30
+--- !u!82 &7988329966358820273
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649510162799234176}
+  m_GameObject: {fileID: 8674552969602786543}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}

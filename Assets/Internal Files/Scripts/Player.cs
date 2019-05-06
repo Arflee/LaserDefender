@@ -1,22 +1,25 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField, Range(-5, 5)] private float xBoundsOffset = 0.5f;
-
     [SerializeField, Range(-5, 5)] private float yBoundsOffset = 0.5f;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private int health = 100;
+    [SerializeField] private GameObject explosionPrefab = null;
 
+    [Header("Audio")]
+    [SerializeField, Range(0, 1)] private float soundVolume = 5f;
+    [SerializeField] private AudioClip deathSound = null;
+    [SerializeField] private AudioClip hitSound = null;
+    
     [Header("Projectile")]
+    [SerializeField, Range(0.1f, 5)] private float profectileFiringPeriod = 0.1f;
     [SerializeField] private GameObject laserPrefab = null;
     [SerializeField] private float laserSpeed = 10f;
-    [SerializeField, Range(0.1f, 5)] private float profectileFiringPeriod = 0.1f;
-
-    [Space]
-    [SerializeField] private GameObject explosionPrefab = null;
 
     private float xMin;
     private float xMax;
@@ -25,11 +28,18 @@ public class Player : MonoBehaviour
 
     private Coroutine firingCoroutine;
     private ParticleSystem explosionParticles;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     private void Start()
     {
         explosionParticles = explosionPrefab.GetComponent<ParticleSystem>();
-
+        audioSource = GetComponent<AudioSource>();
         SetupMoveBoundaries();
     }
 
@@ -50,6 +60,7 @@ public class Player : MonoBehaviour
         if (damageDealer != null)
         {
             health -= damageDealer.GetDamage();
+            audioSource.PlayOneShot(hitSound, soundVolume);
             damageDealer.Hit();
         }
 
@@ -57,6 +68,8 @@ public class Player : MonoBehaviour
         {
             GameObject particleObject =
                 Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, soundVolume);
 
             Destroy(particleObject, explosionParticles.main.duration);
             Destroy(this.gameObject);
