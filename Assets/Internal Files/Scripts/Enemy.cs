@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Enemy")]
     [Space]
+    [SerializeField] private int scoreForKilling = 10;
     [SerializeField] private GameObject explosionPrefab = null;
     [SerializeField] private float health = 100f;
 
@@ -20,11 +21,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxTimeBetweenShots = 3f;
 
     private float shootCounter;
-    private ParticleSystem explosionsParticles;
+    private ParticleSystem explosionsParticles = null;
     private AudioSource enemySFX = null;
+    private GameSession gameSession;
 
     private void Start()
     {
+        gameSession = FindObjectOfType<GameSession>();
+
         explosionsParticles = explosionPrefab.GetComponent<ParticleSystem>();
         enemySFX = GetComponent<AudioSource>();
         shootCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
@@ -69,13 +73,20 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            GameObject particleObject =
-                Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
-
-            Destroy(particleObject, explosionsParticles.main.duration);
-
-            AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position, soundVolume);
-            Destroy(this.gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        gameSession.AddToScore(scoreForKilling);
+
+        GameObject particleObject =
+            Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+
+        Destroy(particleObject, explosionsParticles.main.duration);
+
+        AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position, soundVolume);
+        Destroy(this.gameObject);
     }
 }

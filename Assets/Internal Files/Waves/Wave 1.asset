@@ -19,5 +19,5 @@ MonoBehaviour:
   spawnCooldown: 0.5
   spawnRandomFactor: 0.3
   numberOfEnemies: 5
-  moveSpeed: 5
+  moveSpeed: 1.91
   infiniteMoving: 0

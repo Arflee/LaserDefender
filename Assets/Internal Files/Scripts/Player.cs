@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private float yMin;
     private float yMax;
 
+    private SceneLoader loader;
     private Coroutine firingCoroutine;
     private ParticleSystem explosionParticles;
     private AudioSource audioSource;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        loader = FindObjectOfType<SceneLoader>();
         explosionParticles = explosionPrefab.GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
         SetupMoveBoundaries();
@@ -66,14 +68,24 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            GameObject particleObject =
-                Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
-
-            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, soundVolume);
-
-            Destroy(particleObject, explosionParticles.main.duration);
-            Destroy(this.gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        loader.LoadGameOverScene();
+
+        GameObject particleObject =
+            Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, soundVolume);
+
+        Destroy(particleObject, explosionParticles.main.duration);
+        Destroy(this.gameObject);
     }
 
     private void Move()
