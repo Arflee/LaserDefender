@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float health = 100f;
 
     [Header("Audio")]
-    [SerializeField, Range(0, 1)] private float soundVolume = 5f;
+    [SerializeField, Range(0, 1)] private float deathVolume = 0.5f;
+    [SerializeField, Range(0, 1)] private float shotVolume = 0.5f;
     [SerializeField] private AudioClip enemyDeath = null;
     [SerializeField] private AudioClip enemyShot = null;
 
@@ -27,10 +28,13 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        ChangeVolume.effectsChanged += VolumeChanged;
+
         gameSession = FindObjectOfType<GameSession>();
 
         explosionsParticles = explosionPrefab.GetComponent<ParticleSystem>();
         enemySFX = GetComponent<AudioSource>();
+
         shootCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
@@ -54,7 +58,7 @@ public class Enemy : MonoBehaviour
         GameObject enemyLaser =
             Instantiate(projectilePrefab, this.gameObject.transform.position, Quaternion.identity);
         enemyLaser.GetComponent<Rigidbody2D>().velocity = Vector2.down * speedOfLaser;
-        enemySFX.PlayOneShot(enemyShot, soundVolume);
+        enemySFX.PlayOneShot(enemyShot, shotVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,7 +90,15 @@ public class Enemy : MonoBehaviour
 
         Destroy(particleObject, explosionsParticles.main.duration);
 
-        AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position, soundVolume);
+        AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position, deathVolume);
         Destroy(this.gameObject);
+    }
+
+    private void VolumeChanged(float volume)
+    {
+        deathVolume = volume;
+        shotVolume = volume;
+
+        enemySFX.PlayOneShot(enemyShot);
     }
 }

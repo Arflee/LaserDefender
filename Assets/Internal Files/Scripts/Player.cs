@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab = null;
 
     [Header("Audio")]
-    [SerializeField, Range(0, 1)] private float soundVolume = 5f;
+    [SerializeField, Range(0, 1)] private float deathVolume = 0.5f;
+    [SerializeField, Range(0, 1)] private float hitVolume = 0.5f;
     [SerializeField] private AudioClip deathSound = null;
     [SerializeField] private AudioClip hitSound = null;
     
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        ChangeVolume.effectsChanged += VolumeChanged;
+
         loader = FindObjectOfType<SceneLoader>();
         explosionParticles = explosionPrefab.GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour
         if (damageDealer != null)
         {
             health -= damageDealer.GetDamage();
-            audioSource.PlayOneShot(hitSound, soundVolume);
+            audioSource.PlayOneShot(hitSound, hitVolume);
             damageDealer.Hit();
         }
 
@@ -82,7 +85,7 @@ public class Player : MonoBehaviour
         GameObject particleObject =
             Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
 
-        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, soundVolume);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathVolume);
 
         Destroy(particleObject, explosionParticles.main.duration);
         Destroy(this.gameObject);
@@ -136,5 +139,16 @@ public class Player : MonoBehaviour
 
             yield return new WaitForSeconds(profectileFiringPeriod);
         }
+    }
+
+    private void VolumeChanged(float volume)
+    {
+        deathVolume = volume;
+        hitVolume = volume;
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }
