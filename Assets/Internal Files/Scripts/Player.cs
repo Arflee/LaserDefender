@@ -40,8 +40,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        ChangeVolume.effectsChanged += VolumeChanged;
-
         loader = FindObjectOfType<SceneLoader>();
         explosionParticles = explosionPrefab.GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
@@ -139,12 +137,6 @@ public class Player : MonoBehaviour
 
             yield return new WaitForSeconds(profectileFiringPeriod);
         }
-    }
-
-    private void VolumeChanged(float volume)
-    {
-        deathVolume = volume;
-        hitVolume = volume;
     }
 
     public int GetHealth()

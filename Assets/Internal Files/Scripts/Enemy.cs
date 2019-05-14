@@ -28,14 +28,12 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        ChangeVolume.effectsChanged += VolumeChanged;
-
         gameSession = FindObjectOfType<GameSession>();
 
         explosionsParticles = explosionPrefab.GetComponent<ParticleSystem>();
         enemySFX = GetComponent<AudioSource>();
 
-        shootCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        shootCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
     private void Update()
@@ -92,13 +90,5 @@ public class Enemy : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position, deathVolume);
         Destroy(this.gameObject);
-    }
-
-    private void VolumeChanged(float volume)
-    {
-        deathVolume = volume;
-        shotVolume = volume;
-
-        enemySFX.PlayOneShot(enemyShot);
     }
 }

@@ -179,7 +179,8 @@ MonoBehaviour:
   explosionPrefab: {fileID: 7381251618502379745, guid: 30bfcd76acdae004e8a7e29586f89187,
     type: 3}
   health: 20
-  soundVolume: 0.504
+  deathVolume: 0.5
+  shotVolume: 0.5
   enemyDeath: {fileID: 8300000, guid: 269935c85852ee74c827ccef05a4b034, type: 3}
   enemyShot: {fileID: 8300000, guid: 2ebd20e47b7ca004d8d6e6cb74945c0b, type: 3}
   projectilePrefab: {fileID: 4141383648991153528, guid: e376b88c604398d488031014c4682432,
@@ -209,7 +210,8 @@ AudioSource:
   m_GameObject: {fileID: 3649510162799234176}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243205539622131058, guid: 97cf168b0d92da149b461b564eb32dd0,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

@@ -5,24 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject optionsMenu;
-
     private void Start()
     {
-        optionsMenu.SetActive(false);
-    }
-
-    public void ToggleMainMenu()
-    {
-        optionsMenu.SetActive(false);
-        mainMenu.SetActive(true);
-    }
-
-    public void ToggleOptionsMenu()
-    {
-        mainMenu.SetActive(false);
-        optionsMenu.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            GameObject optionsMenu = GameObject.FindGameObjectWithTag("OptionsMenu");
+            optionsMenu.SetActive(false);
+        }
     }
 
     public void LoadMainMenuScene()

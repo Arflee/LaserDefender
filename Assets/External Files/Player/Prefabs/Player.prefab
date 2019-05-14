@@ -161,7 +161,8 @@ MonoBehaviour:
   health: 100
   explosionPrefab: {fileID: 7381251618502379745, guid: 30bfcd76acdae004e8a7e29586f89187,
     type: 3}
-  soundVolume: 0.44
+  deathVolume: 0.5
+  hitVolume: 0.5
   deathSound: {fileID: 8300000, guid: fc7d9d0d9c89092498370d09170d720c, type: 3}
   hitSound: {fileID: 8300000, guid: 08670b987ffa88a40be5a9ed04e2b079, type: 3}
   profectileFiringPeriod: 0.36
@@ -177,7 +178,8 @@ AudioSource:
   m_GameObject: {fileID: 8674552969602786543}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243205539622131058, guid: 97cf168b0d92da149b461b564eb32dd0,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
