@@ -4,23 +4,23 @@
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy")]
-    [Space]
     [SerializeField] private int scoreForKilling = 10;
     [SerializeField] private GameObject explosionPrefab = null;
     [SerializeField] private float health = 100f;
 
     [Header("Audio")]
-    [SerializeField, Range(0, 1)] private float deathVolume = 0.5f;
-    [SerializeField, Range(0, 1)] private float shotVolume = 0.5f;
     [SerializeField] private AudioClip enemyDeath = null;
     [SerializeField] private AudioClip enemyShot = null;
 
     [Header("Projectile")]
+    [SerializeField] private bool isShooting = true;
     [SerializeField] private GameObject projectilePrefab = null;
     [SerializeField] private float speedOfLaser = 3f;
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
 
+    private float deathVolume = 0.5f;
+    private float shotVolume = 0.5f;
     private float shootCounter;
     private ParticleSystem explosionsParticles = null;
     private AudioSource enemySFX = null;
@@ -31,14 +31,19 @@ public class Enemy : MonoBehaviour
         gameSession = FindObjectOfType<GameSession>();
 
         explosionsParticles = explosionPrefab.GetComponent<ParticleSystem>();
+
         enemySFX = GetComponent<AudioSource>();
+        deathVolume = shotVolume;
 
         shootCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
     private void Update()
     {
-        CountDown();
+        if (isShooting)
+        {
+            CountDown();
+        }
     }
 
     private void CountDown()

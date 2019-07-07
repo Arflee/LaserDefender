@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5567626191330386337}
   - component: {fileID: 5999134475968899147}
   m_Layer: 9
-  m_Name: Enemy 2 Path 2
+  m_Name: Enemy 3 Path 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04fe45ff81171f149845a64358b1a7f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7e11614d36d1324e9dc8cccb02be832, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,14 +95,14 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 0.84}
+    oldSize: {x: 0.82, y: 0.84}
     newSize: {x: 0.99, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -110,23 +110,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.26, y: -0.431789}
-      - {x: 0.52, y: 0.03}
-      - {x: 0.52813613, y: 0.1718637}
-      - {x: 0.33610538, y: 0.16590767}
-      - {x: 0.19732566, y: 0.2740086}
-      - {x: 0.1937537, y: 0.33661532}
-      - {x: -0.009389147, y: 0.4288835}
-      - {x: -0.19681314, y: 0.33349013}
-      - {x: -0.19369696, y: 0.27615032}
-      - {x: -0.32696715, y: 0.16116479}
-      - {x: -0.5258944, y: 0.16231644}
-      - {x: -0.49249232, y: 0.023929665}
-      - {x: -0.2426956, y: -0.431789}
-      - {x: -0.058338687, y: -0.43268436}
-      - {x: -0.08577362, y: -0.25571156}
-      - {x: 0.08166385, y: -0.25256342}
-      - {x: 0.04803513, y: -0.42785934}
+    - - {x: -0.19848931, y: 0.42850664}
+      - {x: -0.41850668, y: 0.30447996}
+      - {x: -0.4128356, y: -0.2082219}
+      - {x: -0.13933791, y: -0.3748871}
+      - {x: -0.116600946, y: -0.42916122}
+      - {x: 0.10519536, y: -0.42855215}
+      - {x: 0.14423168, y: -0.37061772}
+      - {x: 0.41278982, y: -0.20831585}
+      - {x: 0.41544783, y: 0.2963911}
+      - {x: 0.19870335, y: 0.4335951}
 --- !u!114 &5488580069485357773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,17 +165,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b1fc15438577b4f9ec8c0cab3b43e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreForKilling: 10
+  scoreForKilling: 50
   explosionPrefab: {fileID: 7381251618502379745, guid: 30bfcd76acdae004e8a7e29586f89187,
     type: 3}
-  health: 20
+  health: 45
   enemyDeath: {fileID: 8300000, guid: 269935c85852ee74c827ccef05a4b034, type: 3}
   enemyShot: {fileID: 8300000, guid: 2ebd20e47b7ca004d8d6e6cb74945c0b, type: 3}
-  isShooting: 0
-  projectilePrefab: {fileID: 4141383648991153528, guid: e376b88c604398d488031014c4682432,
+  isShooting: 1
+  projectilePrefab: {fileID: 4141383648991153528, guid: 61f3d347b08cd8d418789867bd5148a2,
     type: 3}
-  speedOfLaser: 5
-  minTimeBetweenShots: 0.2
+  speedOfLaser: 2
+  minTimeBetweenShots: 0.5
   maxTimeBetweenShots: 3
 --- !u!114 &5567626191330386337
 MonoBehaviour:

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicPlayer : MonoBehaviour
@@ -10,6 +11,7 @@ public class MusicPlayer : MonoBehaviour
     {
         SetupSingleton();
     }
+
     private void SetupSingleton()
     {
         int playersCount = FindObjectsOfType<MusicPlayer>().Length;
